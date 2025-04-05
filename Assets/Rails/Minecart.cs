@@ -39,10 +39,12 @@ public class Minecart : MonoBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             ApplyImpulse();
         }
+        */
         UpdateDirectionIndicator();
     }
 
@@ -65,6 +67,31 @@ public class Minecart : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         desiredDirection = -(mousePos - transform.position).normalized;
+
+        // Reverse direction if needed
+        if (_targetNode != null)
+        {
+            Vector3 currentEdgeDir = (_targetNode.transform.position - _currentNode.transform.position).normalized;
+            float angle = Vector3.Angle(desiredDirection, currentEdgeDir);
+
+            if (angle > 90f)
+            {
+                // Reverse path direction
+                Node temp = _currentNode;
+                _currentNode = _targetNode;
+                _targetNode = temp;
+                _progress = 1 - _progress;
+                _moveDirection = (_targetNode.transform.position - _currentNode.transform.position).normalized;
+            }
+        }
+
+        _currentSpeed += impulseStrength;
+    }
+
+    public void ApplyShootingImpulse(Vector2 direction, float strength)
+    {
+        impulseStrength = strength;
+        desiredDirection = direction;
 
         // Reverse direction if needed
         if (_targetNode != null)
