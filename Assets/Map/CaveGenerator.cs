@@ -21,7 +21,6 @@ public class CaveGenerator : GridGenerator
         CarveRandomRooms();
         ApplyCellularAutomaton();
         ApplyDetermenisticCellularAutomaton();
-        GeneratePoints();
 
         int fail_state = 0;
 
@@ -34,10 +33,11 @@ public class CaveGenerator : GridGenerator
             CarveRandomRooms();
             ApplyCellularAutomaton();
             ApplyDetermenisticCellularAutomaton();
-            GeneratePoints();
+            
             fail_state += 1;
         }
         
+        GeneratePoints();
     }
 
     void CreateBaseGrid()
