@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GridGenerator : MonoBehaviour
 {
+    [Header("Railway Settings")]
+    [SerializeField] RailwayConstructor _railwayConstructor;
+
     [Header("Grid Settings")]
     public int width = 20;
     public int height = 15;
@@ -17,7 +20,17 @@ public class GridGenerator : MonoBehaviour
     protected bool[,] walls;
     private Dictionary<Vector2Int, GameObject> wallsDictionary = new Dictionary<Vector2Int, GameObject>();
 
-    void Start() => GenerateLevel();
+    public bool[,] Walls => walls;
+    public int Width => width;
+    public int Height => height;
+
+
+
+    void Start()
+    {
+        GenerateLevel();
+        Debug.Log("generated");
+    }
 
     public void GenerateLevel()
     {

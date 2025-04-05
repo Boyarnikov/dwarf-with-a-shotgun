@@ -182,7 +182,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.59375
+  orthographic size: 9.5625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -281,6 +281,50 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!1 &402763644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402763646}
+  - component: {fileID: 402763645}
+  m_Layer: 0
+  m_Name: Supervisor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &402763645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402763644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03b3fe342fa87434ebbbda539763840e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &402763646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402763644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1119291779
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1119291784}
   - component: {fileID: 1119291785}
+  - component: {fileID: 1119291786}
   m_Layer: 0
   m_Name: MapTileset
   m_TagString: Untagged
@@ -307,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 1119291779}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.75, y: -4.99, z: 0.04138066}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325,23 +370,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0477829c6ce33c64c9824c9d9f179af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 50
-  height: 50
+  _railwayConstructor: {fileID: 0}
+  width: 100
+  height: 100
   cellSize: 1
   wallPrefab: {fileID: 4015984833955731049, guid: cf324fc2d06a2734892942f0003aed8c, type: 3}
   edgeWallSprite: {fileID: 901326156, guid: c6868a7e4362a0444bff01eb42a5bebd, type: 3}
   solidWallSprite: {fileID: 1488375845, guid: c6868a7e4362a0444bff01eb42a5bebd, type: 3}
   smoothingPasses: 10
-  minRooms: 8
-  maxRooms: 19
-  minRoomSize: 5
-  maxRoomSize: 10
-  border: 3
+  minRooms: 16
+  maxRooms: 30
+  minRoomSize: 10
+  maxRoomSize: 20
+  border: 5
   desired_volume: 300
   fillProbability: 0.85
+  wallClearanceRadius: 3
+  pointSpacing: 20
+  numberOfPoints: 20
+  gizmoRadius: 0.5
+  gizmoColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &1119291786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119291779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be335495ba75364986cbe83d729e28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _caveGenerator: {fileID: 1119291785}
+  _railwayPrefab: {fileID: 7853887038530913145, guid: 20438e325a27803448c03467043b3e34, type: 3}
+  _nodePrefab: {fileID: 3467010682232769009, guid: 36587aac83e47304a98d34b54d7e4bbe, type: 3}
+  _minecartPrefab: {fileID: 1919593717325421981, guid: 4a220f18df4970644bc1ce9c8b03568c, type: 3}
+  _construct: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 89258330}
+  - {fileID: 402763646}
   - {fileID: 1119291784}

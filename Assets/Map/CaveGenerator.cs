@@ -216,6 +216,8 @@ public class CaveGenerator : GridGenerator
     public Color gizmoColor = Color.cyan;
     private List<Vector2> points = new List<Vector2>();
 
+    public List<Vector2> Points => points;
+
     public void GeneratePoints()
     {
         points.Clear();
